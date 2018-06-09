@@ -138,7 +138,7 @@ CKEDITOR_JQUERY_URL = os.path.join(STATIC_URL, 'js/jquery.min.js')
 CSRF_COOKIE_SECURE = True
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 
 EMAIL_HOST = 'smtp.gmail.com'
