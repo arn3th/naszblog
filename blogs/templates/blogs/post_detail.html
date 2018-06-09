@@ -8,14 +8,14 @@
 <h1>{{ post.name}}
 		
 		{% if post.status == 'public' %}
-		<a href="{% url "blogs:post_share" post.id post.slug %}">
+		<h5><a href="{% url "blogs:post_share" post.id post.slug %}">
 			Udostępnij post
-		</a>
+		</a></h5>
 		{% endif %}
 
 	{% if blog.owner == user %}
-		<a href="{% url 'blogs:edit_post' post.id %}">Edytuj</a>
-		<a href="{% url 'blogs:delete_post' post.id %}">Usuń</a>
+		<h5><a href="{% url 'blogs:edit_post' post.id %}">Edytuj</a></h5>
+		<h5><a href="{% url 'blogs:delete_post' post.id %}">Usuń</a></h5>
 	{% endif %}
 		
  </h1>

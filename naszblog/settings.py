@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4#_-2g2odf^)6nx5tq4(^3!n=6x!gugrd$+4f1qvl0%%5jv^+#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
 
@@ -164,7 +164,7 @@ if os.getcwd() == '/app':
     
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['naszblog-2k18.herokuapp.com']
     
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'
