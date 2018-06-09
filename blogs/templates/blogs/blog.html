@@ -2,7 +2,7 @@
 
 {% block content %}
 	<center><h2>{{ blog.title }}</h2></center>
-	{% if  if user.is_authenticated %}
+	{% if  user.is_authenticated %}
 	<form action="{% url 'blogs:delete_blog' blog.id %}">
 		<input type="submit" value="Usuń" align="right"/>
 	</form>
