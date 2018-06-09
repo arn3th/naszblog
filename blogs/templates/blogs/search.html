@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Wyniki wyszukiwania</h1>
+	{% for post in posts %}
+		<div class="post">
+		<pname><a href="{% url 'blogs:post_detail' post.id post.slug %}">{{ post.name }}</a>
+		(<a href="{{ post.blog.get_absolute_url }}"> {{ post.blog }}<a/> )</pname><br><br>
+		{{ post | safe}}
+	</div>
+	{% empty %}
+		Brak wyszukiwań dla podanego kryterium.
+	{% endfor %}
+	
+	
+{% endblock content %}

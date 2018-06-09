@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>Dodawanie nowego posta</h2>
+	<form action="{% url 'blogs:new_post'  blog.id %}" method='post' class="form">
+		{% csrf_token %}
+		{{ form.media }}
+		{{ form.as_p }}
+		
+			
+		<p><input type="submit" value="Stwórz"></p>
+	</form>
+	
+	<form action="{% url 'blogs:blogs' %}">
+		<input type="submit" value="Anuluj" align="right"/>
+	</form>
+
+{% endblock content %}

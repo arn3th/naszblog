@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<center><h2>{{ blog.title }}</h2></center>
+	<form action="{% url 'blogs:delete_blog' blog.id %}">
+		<input type="submit" value="Usuń" align="right"/>
+	</form>
+	
+	<form action="{% url 'blogs:new_post' blog.id %}">
+		<input type="submit" value="Dodaj post" align="right"/>
+	</form>
+	
+	{% for post in posts %}
+	<div class="post">
+		<pname><a href="{% url 'blogs:post_detail' post.id post.slug %}">{{ post.name }}</a></pname><br><br>
+		{{ post | safe}}
+	</div>
+	{% empty %}
+	Blog nie  zawiera jeszcze postów
+	{% endfor %}
+{% endblock content %}

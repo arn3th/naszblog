@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<center>{{ text }}</center>
+	<form action="{% url 'blogs:delete_blog' blog_id %}" method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Tak" />
+	</form>
+	
+	<form action="{% url 'blogs:blogs' %}">
+		<input type="submit" value="Nie" />
+	</form>
+	
+{% endblock content %}

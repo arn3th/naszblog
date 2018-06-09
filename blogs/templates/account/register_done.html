@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	<h1>Zarejestrowano pomyślnie</h1>
+	Witaj, {{ new_user.username }}!<br/>
+	Twoje konto zostało utworzone. Możesz się już
+	<a href="{% url 'account:user_login' %}">Zalogować</a>
+	
+{% endblock content %}

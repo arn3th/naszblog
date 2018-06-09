@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	{{ text }}
+	<br/>
+	<br/>
+	{% if not user.is_authenticated %}
+		<a href="{% url 'account:user_login' %}">Zaloguj</a> aby móc korzystać z serwisu lub
+		<a href="{% url 'account:register' %}">Zarejestruj się</a>
+		jeśli nie posiadasz jeszcze konta.
+	{% else %}
+	<a href="{% url 'blogs:blogs' %}">Tu znajdują się Twoje blogi</a>
+	{% endif %}
+{% endblock content %}

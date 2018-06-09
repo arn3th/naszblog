@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!	DOCTYPE HTML>	
+<html lang="pl">
+<head>
+	
+		<meta charset="utf-8"/>
+		<meta http-qiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>naszblog</title>
+		
+		<meta name="description" content="Serwis blogowy"/>
+		<link href="{% static "style.css" %}" rel="stylesheet"/>
+		<!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat&amp;subset=latin-ext" rel="stylesheet">
+
+		
+</head>
+
+<body>
+
+	<div class="wrapper">
+	 
+		<a href="{% url 'blogs:blogs' %}">	<div class="logo">
+				<img src="{% static 'images/opydl.png' %}" style="float: left;"/>
+			</div></a>
+
+			<div class="search">
+				<form method='GET' action="{% url 'blogs:search' %}">
+					<input type='text' name='q' placeholder='Wyszukaj' size="16" value='{{ request.GET.q }}'/>
+					<input type='submit' value='Szukaj' />
+				</form>
+			
+			</div>
+		
+		<div class="content">
+			
+			<div class="rightNav">
+				{% block content %}
+			
+				{% endblock %}
+				
+			</div>
+			
+			<div class="topPanel">
+				
+				{% if not user.is_authenticated %}
+					<div class ="m"><a href="{% url 'account:user_login' %}"/><b>Zaloguj</b></a></br></div>
+					<hr/>
+					<div class ="m"><a href="{% url 'account:register' %}"/><b>Zarejestruj</b></div></a></br></m>
+				{% else %} 
+				Zalogowano, jako {{ user.username }}
+				<br><a href="{% url 'account:logout' %}"/><b>Wyloguj</b></a></br>
+				<a href="{% url 'account:password_change' %}"><b>Zmień hasło</b></a>
+				<br><a href="{% url 'account:edit_profile' %}"><b>Zmień ustawienia</b></a>
+				{% endif %}
+
+			</div>
+			<div class="bottomPanel">
+			
+				<b>Ostatnie posty</b>
+					<ul>
+					{% for post in last_posts %}
+							<div class = "option"><a href="{{post.get_absolute_url}}">{{ post.name }}</div></a>
+					{% endfor %}
+			
+					</ul>
+			</div>
+		
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Twoje blogi</h1>
+	
+		<a href="{% url 'blogs:new_blog' %}"> Dodaj nowy blog</a>
+		{% for blog in blogs %}
+			<h2><li><a href="{{ blog.get_absolute_url }}"> {{ blog }} </a></li><h2>
+		{% empty %}
+		<li> Nie został jeszcze dodany żaden temat. </li>
+		{% endfor %}
+				
+	
+	
+	<h3>{% include "pagination.html" with page=blogs %}</h3>
+	
+			
+{% endblock %}

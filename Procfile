@@ -1,0 +1,1 @@
+web: gunicorn naszblog.wsgi --log-file -

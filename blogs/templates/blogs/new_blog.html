@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h2>Tworzenie nowego bloga</h2>
+	Podaj nazwę:
+	<form action="{% url 'blogs:new_blog' %}" method='post' class="form">
+		{{ form.as_p }}
+		{% csrf_token %}
+			
+		<p><input type="submit" value="Stwórz"></p>
+	</form>
+	
+	<form action="{% url 'blogs:blogs' %}">
+				<input type="submit" value="Wróć" />
+	</form>
+{% endblock content %}

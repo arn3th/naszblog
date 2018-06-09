@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}	
+
+	<h1>Informacje o użytkowniku {{ user.username }}</h1>
+	<img src="{{ profile.photo.url }}">
+	<li>Imię: {{ user.first_name }}</li>
+	<li>Nazwisko: {{ user.second_name }}</li>
+	<li>e-mail: {{ user.email }}</li>
+	<li>Data Urodzenia: {{ profile.date_of_birth }}</li>
+	
+	
+{% endblock content %}

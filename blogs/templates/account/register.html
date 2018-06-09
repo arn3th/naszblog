@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	<h1>Utwórz nowe konto</h1>
+	<p>Wypełnij formularz aby się zarejestrować</p>
+	
+	
+	<form action ="{% url 'account:register' %}" method="post">
+		{{ user_form.as_p }}
+		<input type="submit" value="Utwórz konto"/>
+		{% csrf_token %}
+	</form>
+	
+{% endblock content %}

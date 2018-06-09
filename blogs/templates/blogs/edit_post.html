@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<form action="{% url 'blogs:edit_post' post.id %}" method='post'>
+		{{ form.media }}
+		{{ form.as_p }}
+		{% csrf_token %}
+		<input type="submit" value="Zapisz" />
+	</form>
+
+{% endblock content %}

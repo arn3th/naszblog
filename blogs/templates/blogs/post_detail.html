@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center><h2><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2></center>
+{% if post.status == 'private' %}
+	<center>Post prywatny</center>
+{% endif %}
+<h1>{{ post.name}}
+		
+		{% if post.status == 'public' %}
+		<a href="{% url "blogs:post_share" post.id post.slug %}">
+			Udostępnij post
+		</a>
+		{% endif %}
+
+	{% if blog.owner == user %}
+		<a href="{% url 'blogs:edit_post' post.id %}">Edytuj</a>
+		<a href="{% url 'blogs:delete_post' post.id %}">Usuń</a>
+	{% endif %}
+		
+ </h1>
+	
+	{{ post.text|safe}}
+	
+	<br/>
+	Autor: <a href="{% url 'account:user_profile' blog.owner.id %}">{{ blog.owner.username }}</a>
+	<hr/>
+	{% for comment in comments %}
+		<div class="comment">
+		<b>{{ comment.author }}:</b> {{ comment.body }}
+		{% if comment.author == user %}
+			<a href="{% url 'blogs:delete_comm' comment.id %}">Usuń</a>
+		{% endif %}
+		<h3>{{ comment.created }}</h3>
+			
+		</div>
+	{% empty %}
+		<p>Nie ma jeszcze żadnych komentarzy</p>
+	{% endfor %}
+	
+	{% if user.is_authenticated and flag %}
+		<h2>Twój komentarz został dodany</h2>
+	{% elif  user.is_authenticated %}
+		<h2>Dodaj nowy komentarz</h2>
+		<form action="{{ post.get_absolute_url }}" method="post">
+			{{ comment_form }}
+			{% csrf_token %}
+			<p><input type="submit" value="Dodaj komentarz"></p>
+		</form>
+		{% endif %}
+{% endblock content %}
