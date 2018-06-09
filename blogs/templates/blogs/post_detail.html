@@ -9,13 +9,13 @@
 		
 		{% if post.status == 'public' %}
 		<a href="{% url "blogs:post_share" post.id post.slug %}">
-			Udostępnij post
+			| Udostępnij post
 		</a>
 		{% endif %}
 
 	{% if blog.owner == user %}
-		<a href="{% url 'blogs:edit_post' post.id %}">Edytuj</a>
-		<a href="{% url 'blogs:delete_post' post.id %}">Usuń</a>
+		<a href="{% url 'blogs:edit_post' post.id %}">| Edytuj</a>
+		<a href="{% url 'blogs:delete_post' post.id %}">| Usuń</a>
 	{% endif %}
 		
  </h1>
