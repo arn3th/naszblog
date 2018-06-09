@@ -2,6 +2,7 @@
 
 {% block content %}
 	<center><h2>{{ blog.title }}</h2></center>
+	{% if  if user.is_authenticated %}
 	<form action="{% url 'blogs:delete_blog' blog.id %}">
 		<input type="submit" value="Usuń" align="right"/>
 	</form>
@@ -9,6 +10,7 @@
 	<form action="{% url 'blogs:new_post' blog.id %}">
 		<input type="submit" value="Dodaj post" align="right"/>
 	</form>
+	{% endif %}
 	
 	{% for post in posts %}
 	<div class="post">
