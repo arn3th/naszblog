@@ -156,6 +156,7 @@ RECAPTCHA_PUBLIC_KEY = '6Lfn4FsUAAAAABAnQbnMf-VfvKRqHBn6zM6kVZeT'
 RECAPTCHA_PRIVATE_KEY = '6Lfn4FsUAAAAAB-jxzNZr1-dpreef7yvtR0BCCO1'
 NOCAPTCHA = True
 
+
 if os.getcwd() == '/app':
     import dj_database_url
     DATABASES = {
