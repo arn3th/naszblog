@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404, handler500, url
 from django.conf import settings
 from account import views as auviews
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 handler404 = auviews.error404
@@ -33,6 +34,15 @@ urlpatterns = [
     
 ] 
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$',
+            'django.views.static.serve', {
+                'document_root': settings.MEDIA_ROOT,
+            }
+        ),
+    ]
 
-if not settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()

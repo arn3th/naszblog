@@ -133,6 +133,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_JQUERY_URL = os.path.join(STATIC_URL, 'js/jquery.min.js')
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
 
 #CSRF_FAILURE_VIEW = 'blogs.views.delete_blog'
 
